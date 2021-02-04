@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object creation patterns</title>
+</head>
+<body>
+    <script>
+        // 1. option Factory Pattern
+        //we created Factory function first
+        let peopleFactory = function (name, age, state) {
+            // we created temp object second
+            let temp = {};
+            // we attached factory parameters to our temp object as properties 
+            temp.age = age;
+            temp.name = name;
+            temp.state = state;
+            // then we created a function related to our temp object to process our properties
+            temp.printPerson = function() {
+                console.log('Factory: My name is ' + this.name + ', I am ' + this.age + ' years old, and I live in ' + this.state);
+            };
+            // and in the end we return out temp object as a factory function result
+            return temp;
+            
+        }
+
+        // so based on our main class, function, obj, etc. we created new objects as a person
+
+        let person1 = peopleFactory('John', 23, 'CA');
+        let person2 = peopleFactory('Anna', 26,'SC');
+        // in the end we are able to use sub functions in side of of the our main factory.
+        person1.printPerson()
+        person2.printPerson()
+    
+
+    </script>
+</body>
+</html>
