@@ -57,7 +57,27 @@
         person3.printPerson()
         person4.printPerson()
 		
+	// 3. option Dynamic Prototype pattern 
 
+        let peopleDynamicProto = function(name, age, state){
+
+            this.age = age;
+            this.name = name;
+            this.state= state;
+            // With if function we are asking if printPerson function does not exist or not and if it doesn't exist create once.
+            if (typeof this.printPerson !== 'function') {
+                peopleDynamicProto.prototype.printPerson = function () {
+                    console.log('DynamicPrototype: My name is ' + this.name + ', I am ' + this.age + ' years old, and I live in ' + this.state); 
+                };
+            }
+        };
+        let person5 = new peopleDynamicProto('John', 23, 'CA');
+        let person6 = new peopleDynamicProto('Anna', 26,'SC');
+
+        person6.printPerson();
+        person5.printPerson();
+        console.log('name' in person5);
+        console.log(person5.hasOwnProperty('name'));
     </script>
 </body>
 </html>
