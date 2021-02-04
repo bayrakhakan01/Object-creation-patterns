@@ -32,7 +32,31 @@
         // in the end we are able to use sub functions in side of of the our main factory.
         person1.printPerson()
         person2.printPerson()
-    
+        
+    // 2. option Constructor pattern (this method more like JAVA when you create a constructor)
+
+        // we created Constructor object
+
+        let peopleConstructor = function (name, age, state) {
+            // instead of creating a temporary object we directly attached Constructor parameters to our main object as properties            this.name = name;
+            // bear in mind functions are also OBJECT
+            this.name = name;
+            this.age = age;
+            this.state = state;
+
+            this.printPerson = function () {
+                console.log('Constructor: My name is ' + this.name + ', I am ' + this.age + ' years old, and I live in ' + this.state);
+            };
+        };
+
+         // since we are not returning any object inside of Constructor obj we have to create another obj from Constructor obj by keyword's new
+
+        let person3 = new peopleConstructor('John', 23, 'CA');
+        let person4 = new peopleConstructor('Anna', 26,'SC');
+        // in the end we are able to use sub functions in side of of the our main factory.
+        person3.printPerson()
+        person4.printPerson()
+		
 
     </script>
 </body>
